@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {
+	MD3DarkTheme as DefaultTheme,
+	PaperProvider,
+} from "react-native-paper";
+import MyApp from "./src/MyApp";
+import SafeAreaProvider from "./src/providers/safe-area";
+
+const theme = {
+	...DefaultTheme,
+	dark: true,
+};
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
+	return (
+		<PaperProvider theme={theme}>
+			<SafeAreaProvider>
+				<MyApp />
+			</SafeAreaProvider>
+		</PaperProvider>
+	);
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
