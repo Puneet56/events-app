@@ -1,6 +1,5 @@
-import { BlurView } from "@react-native-community/blur";
 import { useState } from "react";
-import { ImageBackground, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
 	Button,
 	IconButton,
@@ -8,6 +7,7 @@ import {
 	Text,
 	useTheme,
 } from "react-native-paper";
+import { EventItem } from "./features/events";
 
 type Event = {
 	id: string;
@@ -115,42 +115,9 @@ const MyApp = () => {
 				</Button>
 			</ScrollView>
 
-			<View
-				style={{
-					width: "80%",
-					alignItems: "center",
-					overflow: "hidden",
-					borderRadius: 32,
-				}}
-			>
-				<ImageBackground
-					style={{
-						width: "100%",
-						height: 300,
-						position: "relative",
-					}}
-					resizeMode="cover"
-					source={{
-						uri: "https://picsum.photos/300/200",
-					}}
-				>
-					<BlurView
-						blurType="light"
-						style={{
-							position: "absolute",
-							bottom: 0,
-							left: 0,
-							right: 0,
-							height: 70,
-							paddingHorizontal: 12,
-							paddingVertical: 4,
-							display: "flex",
-						}}
-					>
-						<Text variant="titleLarge">Hello</Text>
-					</BlurView>
-				</ImageBackground>
-			</View>
+			{[...new Array(10)].map((_, index) => (
+				<EventItem key={index} />
+			))}
 		</ScrollView>
 	);
 };
